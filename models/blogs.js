@@ -2,27 +2,28 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema
 
-const userSchema = new Schema({
-    name:{
+const blogSchema = new Schema({
+    title:{
         type:String,
         required :true
     },
-    email:{
+    description:{
         type:String,
         required:true,
-        unique:true
     },
-    password:{
+    image:{
         type:String,
         required:true,
-        minlength:6
     },
-    blogs:[{type:mongoose.Types.ObjectId,
-            ref:"Blog",
-            required:true}]
+    user:{
+        type:mongoose.Types.ObjectId,
+        ref:"User",
+        required:true,
+    }
+    
 });
 
-export default mongoose.model("User",userSchema);
+export default mongoose.model("Blog",blogSchema);
 
 // in mongodb it will store as users this is convention of mongodb
 
